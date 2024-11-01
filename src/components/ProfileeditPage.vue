@@ -148,6 +148,7 @@
 import { ref, onMounted } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 import { useRouter } from 'vue-router'
+import api from '@/services/api'  // Добавьте этот импорт
 
 const authStore = useAuthStore()
 const router = useRouter()
@@ -206,6 +207,13 @@ const loadReferenceData = async () => {
       api.get('legal-entity-types/'),
       api.get('categories/')
     ])
+
+    console.log('Specialties:', specialtiesRes.data)
+    console.log('Educations:', educationsRes.data)
+    console.log('Experiences:', experiencesRes.data)
+    console.log('Programs:', programsRes.data)
+    console.log('Legal Entity Types:', legalTypesRes.data)
+    console.log('Categories:', categoriesRes.data)
 
     specialties.value = specialtiesRes.data
     educations.value = educationsRes.data
